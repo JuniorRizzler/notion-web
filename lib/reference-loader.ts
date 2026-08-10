@@ -14,9 +14,25 @@ const CAPTURED_WIDGET_MARKERS = [
 ];
 const NAV_LOGO = /<a\s+class=globalNavigation_logo__i44_w\b[^>]*>[\s\S]*?<\/a>/i;
 const FOOTER_LOGO = /<a\s+class=footer_logo__ssDpx\b[^>]*>[\s\S]*?<\/a>/i;
+const HERO_TITLE = /<h1\b[^>]*\bhomepageHeroTeamsAndAgents_title__pMijM[^>]*>[\s\S]*?<\/h1>/i;
 
 const animatedLogo = `
   <img class="studyconcept-brand-image" src="/brand/studyconcept-logo-animated.svg?v=original-flame-1" alt="" width="36" height="36" aria-hidden="true">
+`;
+
+const studyConceptHeroTitle = `
+  <h1 class="semanticTypography_semanticTypography__mWJkv semanticTypography_variantGlobalTitle__D1p6b homepageHeroTeamsAndAgents_title__pMijM studyconcept-hero-title">
+    Study less,
+    <span class="homepageHeroTeamsAndAgents_productPillAnimation__59vfH studyconcept-rotating-pill">
+      <span class="homepageHeroTeamsAndAgents_productPillLabel__13XEh studyconcept-rotating-label" aria-label="Relax, train, work, enjoy, and more">
+        <span class="studyconcept-rotating-word">Relax</span>
+        <span class="studyconcept-rotating-word">Train</span>
+        <span class="studyconcept-rotating-word">Work</span>
+        <span class="studyconcept-rotating-word">Enjoy</span>
+        <span class="studyconcept-rotating-word">More</span>
+      </span>
+    </span>
+  </h1>
 `;
 
 function replaceLegacyLogos(markup: string) {
@@ -32,6 +48,10 @@ function replaceLegacyLogos(markup: string) {
         <span class="studyconcept-wordmark">StudyConcept</span>
       </a>`
     );
+}
+
+function replaceHeroTitle(markup: string) {
+  return markup.replace(HERO_TITLE, studyConceptHeroTitle);
 }
 
 function removeCapturedBrowserWidgets(markup: string) {
@@ -67,6 +87,6 @@ export function loadReferenceMarkup() {
     head: removeCapturedExtensionStyles(
       capturedHead.replace(CAPTURED_TITLE, "").replace(CAPTURED_ICON, "")
     ),
-    body: replaceLegacyLogos(removeCapturedBrowserWidgets(capturedBody))
+    body: replaceHeroTitle(replaceLegacyLogos(removeCapturedBrowserWidgets(capturedBody)))
   };
 }

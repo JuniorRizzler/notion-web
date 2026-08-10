@@ -40,6 +40,108 @@
   white-space: nowrap;
 }
 
+.studyconcept-hero-title {
+  text-wrap: balance;
+}
+
+.studyconcept-rotating-pill {
+  --studyconcept-pill-duration: 15s;
+  vertical-align: 0.04em;
+  animation: studyconcept-pill-color var(--studyconcept-pill-duration) infinite;
+}
+
+.studyconcept-rotating-pill::before {
+  animation: studyconcept-dot-color var(--studyconcept-pill-duration) infinite;
+}
+
+.studyconcept-rotating-label {
+  position: relative;
+  block-size: 1.21em;
+  inline-size: 2.65em;
+  vertical-align: bottom;
+  animation: studyconcept-pill-width var(--studyconcept-pill-duration) infinite;
+}
+
+.studyconcept-rotating-word {
+  position: absolute;
+  inset: 0 auto auto 0;
+  opacity: 0;
+  animation: studyconcept-word-cycle var(--studyconcept-pill-duration) infinite;
+  will-change: opacity, transform;
+}
+
+.studyconcept-rotating-word:nth-child(2) {
+  animation-delay: -12s;
+}
+
+.studyconcept-rotating-word:nth-child(3) {
+  animation-delay: -9s;
+}
+
+.studyconcept-rotating-word:nth-child(4) {
+  animation-delay: -6s;
+}
+
+.studyconcept-rotating-word:nth-child(5) {
+  animation-delay: -3s;
+}
+
+@keyframes studyconcept-word-cycle {
+  0%, 16% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  19% {
+    opacity: 0;
+    transform: translateY(-0.28em);
+  }
+  97% {
+    opacity: 0;
+    transform: translateY(0.28em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes studyconcept-pill-width {
+  0%, 16%, 100% { inline-size: 2.65em; }
+  20%, 36% { inline-size: 2.35em; }
+  40%, 56% { inline-size: 2.25em; }
+  60%, 76% { inline-size: 2.55em; }
+  80%, 96% { inline-size: 2.35em; }
+}
+
+@keyframes studyconcept-pill-color {
+  0%, 16%, 100% { background-color: #fee7a8; }
+  20%, 36% { background-color: #d9f5e5; }
+  40%, 56% { background-color: #dce9ff; }
+  60%, 76% { background-color: #eadcff; }
+  80%, 96% { background-color: #ffdeda; }
+}
+
+@keyframes studyconcept-dot-color {
+  0%, 16%, 100% { background-color: #f4a900; }
+  20%, 36% { background-color: #1f9d67; }
+  40%, 56% { background-color: #2f6fed; }
+  60%, 76% { background-color: #7c4dcc; }
+  80%, 96% { background-color: #e05247; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studyconcept-rotating-pill,
+  .studyconcept-rotating-pill::before,
+  .studyconcept-rotating-label,
+  .studyconcept-rotating-word {
+    animation: none;
+  }
+
+  .studyconcept-rotating-word:first-child {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 599px) {
   .studyconcept-footer-brand {
     gap: 8px;
