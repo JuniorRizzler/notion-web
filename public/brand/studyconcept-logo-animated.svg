@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Animated StudyConcept logo</title>
+  <desc id="description">
+    The transparent StudyConcept SC mark transitions through six brand colour schemes in an infinite loop.
+  </desc>
+
+  <style>
+    .gradient-start,
+    .gradient-middle,
+    .gradient-end {
+      animation-duration: 36s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    .gradient-start {
+      animation-name: cycle-start;
+    }
+
+    .gradient-middle {
+      animation-name: cycle-middle;
+    }
+
+    .gradient-end {
+      animation-name: cycle-end;
+    }
+
+    @keyframes cycle-start {
+      0%, 100% { stop-color: #171a2b; }
+      16.666% { stop-color: #004435; }
+      33.333% { stop-color: #352044; }
+      50% { stop-color: #073b4c; }
+      66.666% { stop-color: #20242b; }
+      83.333% { stop-color: #171717; }
+    }
+
+    @keyframes cycle-middle {
+      0%, 100% { stop-color: #27358a; }
+      16.666% { stop-color: #008c72; }
+      33.333% { stop-color: #7653d6; }
+      50% { stop-color: #23bfc7; }
+      66.666% { stop-color: #806423; }
+      83.333% { stop-color: #171717; }
+    }
+
+    @keyframes cycle-end {
+      0%, 100% { stop-color: #4263eb; }
+      16.666% { stop-color: #49cdae; }
+      33.333% { stop-color: #f06e64; }
+      50% { stop-color: #58a6ff; }
+      66.666% { stop-color: #d99a24; }
+      83.333% { stop-color: #171717; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gradient-start,
+      .gradient-middle,
+      .gradient-end {
+        animation: none;
+      }
+    }
+  </style>
+
+  <defs>
+    <linearGradient
+      id="studyconcept-gradient"
+      x1="78"
+      y1="72"
+      x2="434"
+      y2="440"
+      gradientUnits="userSpaceOnUse"
+      color-interpolation="sRGB"
+    >
+      <stop class="gradient-start" offset="0" stop-color="#171a2b" />
+      <stop class="gradient-middle" offset="0.52" stop-color="#27358a" />
+      <stop class="gradient-end" offset="1" stop-color="#4263eb" />
+    </linearGradient>
+  </defs>
+
+  <path
+    fill="url(#studyconcept-gradient)"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="
+      M 235 56
+      C 172 61 119 96 93 157
+      C 76 197 89 230 124 255
+      C 153 276 153 306 119 334
+      L 89 352
+      C 113 414 173 455 250 455
+      C 334 455 401 400 424 314
+      L 393 295
+      C 355 272 354 239 392 202
+      L 422 182
+      C 404 112 347 58 270 56
+      Z
+
+      M 238 101
+      C 290 98 335 127 354 162
+      C 365 182 351 194 338 203
+      C 325 216 319 237 319 251
+      C 319 277 334 296 357 320
+      C 365 330 357 346 343 361
+      C 315 393 282 409 248 409
+      C 210 409 179 392 163 371
+      C 148 351 158 336 175 321
+      C 190 307 197 287 191 271
+      C 185 252 175 243 143 213
+      C 127 198 132 176 143 157
+      C 163 125 198 104 238 101
+      Z
+    "
+  />
+</svg>

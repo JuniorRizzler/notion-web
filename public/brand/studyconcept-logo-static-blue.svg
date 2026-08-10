@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">StudyConcept</title>
+  <defs>
+    <linearGradient id="badge" x1="92" y1="70" x2="426" y2="442" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb" />
+      <stop offset="0.52" stop-color="#22bde9" />
+      <stop offset="1" stop-color="#725cff" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#badge)"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="
+      M 235 56
+      C 172 61 119 96 93 157
+      C 76 197 89 230 124 255
+      C 153 276 153 306 119 334
+      L 89 352
+      C 113 414 173 455 250 455
+      C 334 455 401 400 424 314
+      L 393 295
+      C 355 272 354 239 392 202
+      L 422 182
+      C 404 112 347 58 270 56
+      Z
+
+      M 238 101
+      C 290 98 335 127 354 162
+      C 365 182 351 194 338 203
+      C 325 216 319 237 319 251
+      C 319 277 334 296 357 320
+      C 365 330 357 346 343 361
+      C 315 393 282 409 248 409
+      C 210 409 179 392 163 371
+      C 148 351 158 336 175 321
+      C 190 307 197 287 191 271
+      C 185 252 175 243 143 213
+      C 127 198 132 176 143 157
+      C 163 125 198 104 238 101
+      Z
+    "
+  />
+</svg>
