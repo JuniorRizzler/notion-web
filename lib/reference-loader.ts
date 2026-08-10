@@ -5,6 +5,13 @@ const BODY_OPEN = /<body[^>]*>/i;
 const HTML_OPEN = /<html[^>]*>/i;
 const CAPTURED_TITLE = /<title\b[^>]*>[\s\S]*?<\/title>/gi;
 const CAPTURED_ICON = /<link\b(?=[^>]*\brel=(?:"icon"|'icon'|icon))[^>]*>/gi;
+const CAPTURED_STYLE = /<style\b[^>]*>[\s\S]*?<\/style>/gi;
+const CAPTURED_WIDGET_MARKERS = [
+  '<span id=PING_CONTENT_DLS_POPUP',
+  '<span id="PING_CONTENT_DLS_POPUP"',
+  '<div id=transcend-consent-manager',
+  '<div id="transcend-consent-manager"'
+];
 const NAV_LOGO = /<a\s+class=globalNavigation_logo__i44_w\b[^>]*>[\s\S]*?<\/a>/i;
 const FOOTER_LOGO = /<a\s+class=footer_logo__ssDpx\b[^>]*>[\s\S]*?<\/a>/i;
 
@@ -27,6 +34,23 @@ function replaceLegacyLogos(markup: string) {
     );
 }
 
+function removeCapturedBrowserWidgets(markup: string) {
+  const widgetStart = CAPTURED_WIDGET_MARKERS.reduce((earliest, marker) => {
+    const index = markup.indexOf(marker);
+
+    if (index === -1) return earliest;
+    return earliest === -1 ? index : Math.min(earliest, index);
+  }, -1);
+
+  return widgetStart === -1 ? markup : markup.slice(0, widgetStart);
+}
+
+function removeCapturedExtensionStyles(markup: string) {
+  return markup.replace(CAPTURED_STYLE, (style) =>
+    style.includes("MCAFEE RESTRICTED CONFIDENTIAL") ? "" : style
+  );
+}
+
 export function loadReferenceMarkup() {
   const source = readFileSync(path.join(process.cwd(), "public", "reference.html"), "utf8");
   const htmlMatch = HTML_OPEN.exec(source);
@@ -40,7 +64,9 @@ export function loadReferenceMarkup() {
   const capturedBody = source.slice(bodyMatch.index + bodyMatch[0].length);
 
   return {
-    head: capturedHead.replace(CAPTURED_TITLE, "").replace(CAPTURED_ICON, ""),
-    body: replaceLegacyLogos(capturedBody)
+    head: removeCapturedExtensionStyles(
+      capturedHead.replace(CAPTURED_TITLE, "").replace(CAPTURED_ICON, "")
+    ),
+    body: replaceLegacyLogos(removeCapturedBrowserWidgets(capturedBody))
   };
 }
