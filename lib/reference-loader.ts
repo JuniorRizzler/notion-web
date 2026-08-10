@@ -9,10 +9,7 @@ const NAV_LOGO = /<a\s+class=globalNavigation_logo__i44_w\b[^>]*>[\s\S]*?<\/a>/i
 const FOOTER_LOGO = /<a\s+class=footer_logo__ssDpx\b[^>]*>[\s\S]*?<\/a>/i;
 
 const animatedLogo = `
-  <picture class="studyconcept-brand-picture" aria-hidden="true">
-    <source media="(prefers-color-scheme: dark)" srcset="/brand/studyconcept-logo-animated-dark.svg">
-    <img class="studyconcept-brand-image" src="/brand/studyconcept-logo-animated.svg" alt="" width="36" height="36">
-  </picture>
+  <img class="studyconcept-brand-image" src="/brand/studyconcept-logo-animated.svg?v=original-flame-1" alt="" width="36" height="36" aria-hidden="true">
 `;
 
 function replaceLegacyLogos(markup: string) {
